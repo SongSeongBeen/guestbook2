@@ -5,8 +5,8 @@
 <%@ page import="java.util.List" %>
 
 <%
-	GuestbookDao guestbookDao = new GuestbookDao();
-	List<GuestbookVo> guestbookList = guestbookDao.getList();
+	@SuppressWarnings("unchecked")
+	List<GuestbookVo> list = (List<GuestbookVo>)request.getAttribute("gList");
 %>
 
 <!DOCTYPE html>
@@ -19,7 +19,7 @@
 	
 	<body>
 	<!-- 등록 폼영역 -->
-	<form action="/guestbook2/add" method="get">
+	<form action="/guestbook2/gbc" method="get">
 		<table border="1" width="500px">
 			<tr>
 				<td>이름</td>
@@ -30,18 +30,16 @@
 			<tr>
 				<td colspan="4"><textarea cols="65" rows="5" name="content"></textarea></td>
 			</tr>
-			<tr>
-				<td><input type="hidden" name="action" value="add"></td>
-				<td colspan="4"><button type="submit">확인</button></td>
-			</tr>
 		</table>
+			<button type="submit">확인</button>
+			<input type="hidden" name="action" value="add">
 	</form>
 		<!-- 등록 폼영역 -->
 		<br>
 		<!-- 리스트영역 -->
 
 		<%
-		for(GuestbookVo vo : guestbookList){
+		for(GuestbookVo vo : list){
 		//for(int i=0; i<guestbookList.size(); i++){	
 		%>
 		<table border="1"  width="500px">
@@ -49,7 +47,7 @@
 				<td><%=vo.getNo()%></td>
 				<td><%=vo.getName() %></td>
 				<td><%=vo.getRegDate()%></td>
-				<td><a href="./deleteForm.jsp?no=<%=vo.getNo()%>&password=<%=vo.getPassword()%>">[삭제]</a></td>
+				<td><a href="/guestbook2/gbc?action=deleteForm&no=<%=vo.getNo()%>&password=<%=vo.getPassword()%>">[삭제]</a></td>
 			</tr>
 			<tr>
 				<td colspan="4">

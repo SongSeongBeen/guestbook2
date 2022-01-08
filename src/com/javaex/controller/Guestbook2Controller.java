@@ -15,7 +15,6 @@ import com.javaex.vo.GuestbookVo;
 
 
 
-
 @WebServlet("/gbc")
 public class Guestbook2Controller extends HttpServlet {
 
@@ -55,7 +54,27 @@ public class Guestbook2Controller extends HttpServlet {
 			//저장한다.
 			guestbookDao.guestInsert(guestbookVo);
 			
-			response.sendRedirect("/guestbook2/gbc?action=add");
+			response.sendRedirect("gbc?action=addList");
+	//삭제폼		
+		}else if("deleteForm".equals(act)){
+			
+			System.out.println("action=deleteForm");
+			
+			RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/deleteForm.jsp");
+			rd.forward(request, response);
+			
+	//삭제입력		
+		}else if("delete".equals(act)){
+			
+			System.out.println("확인용"); 
+			
+			int no =  Integer.parseInt(request.getParameter("no"));
+			String password = request.getParameter("password");
+			
+			//삭제
+			new GuestbookDao().guestbookDelete(no, password);
+			
+			response.sendRedirect("gbc?action=addList");
 			
 		}else {
 			System.out.println("파라미터값 없음");
@@ -64,8 +83,6 @@ public class Guestbook2Controller extends HttpServlet {
 		
 		
 	}
-
-
 	
 	
 	

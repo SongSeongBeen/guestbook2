@@ -15,9 +15,10 @@
 	
 	<body>
 		<br>
-		<form action="delete.jsp" method="get">
+		<form action="/guestbook2/gbc" method="get">
 		        <input  type="hidden" name="no" value="<%= no %>"> 
 	         	비밀번호 <input  type="password" name="password" value=""> 
+	         	 <input  type="hidden" name="action" value="delete"> 
 			    <button type="submit"> 확인 </button>
 		</form>
 		<br>
