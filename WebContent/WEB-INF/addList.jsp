@@ -47,7 +47,7 @@
 				<td><%=vo.getNo()%></td>
 				<td><%=vo.getName() %></td>
 				<td><%=vo.getRegDate()%></td>
-				<td><a href="/guestbook2/gbc?action=deleteForm&no=<%=vo.getNo()%>&password=<%=vo.getPassword()%>">[삭제]</a></td>
+				<td><a href="/guestbook2/gbc?action=deleteForm&no=<%=vo.getNo()%>">[삭제]</a></td>
 			</tr>
 			<tr>
 				<td colspan="4">
