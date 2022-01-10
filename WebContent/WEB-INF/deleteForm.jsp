@@ -22,6 +22,6 @@
 			    <button type="submit"> 확인 </button>
 		</form>
 		<br>
-		<a href="./addList.jsp">메인으로 돌아가기</a>
+		<a href="./gbc?action=addList">메인으로 돌아가기</a>
 	</body>
 </html>
