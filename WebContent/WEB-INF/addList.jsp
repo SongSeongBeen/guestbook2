@@ -1,13 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="com.javaex.dao.GuestbookDao" %>    
-<%@ page import="com.javaex.vo.GuestbookVo" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <%@ page import="java.util.List" %>
 
-<%
-	@SuppressWarnings("unchecked")
-	List<GuestbookVo> list = (List<GuestbookVo>)request.getAttribute("gList");
-%>
+
 
 <!DOCTYPE html>
 
@@ -38,25 +34,23 @@
 		<br>
 		<!-- 리스트영역 -->
 
-		<%
-		for(GuestbookVo vo : list){
-		//for(int i=0; i<guestbookList.size(); i++){	
-		%>
 		<table border="1"  width="500px">
-			<tr>
-				<td><%=vo.getNo()%></td>
-				<td><%=vo.getName() %></td>
-				<td><%=vo.getRegDate()%></td>
-				<td><a href="/guestbook2/gbc?action=deleteForm&no=<%=vo.getNo()%>">[삭제]</a></td>
-			</tr>
-			<tr>
-				<td colspan="4">
-				<%=vo.getContent() %>
-				</td>
-			</tr>
+			<c:forEach items="${gList}" var="vo"  varStatus="status">
+				<tr>
+					<td>${vo.no}</td>
+					<td>${vo.name}</td>
+					<td>${vo.regDate}</td>
+					<td><a href="/guestbook2/gbc?action=deleteForm&no=${vo.no}">[삭제]</a></td>
+				</tr>
+				<tr>
+					<td colspan="4">
+					${vo.content}
+					</td>
+				</tr>
+			</c:forEach>
 		</table>
 		<br>
-		<%}%>
+
 		
 		<!-- 리스트영역 -->
 	
