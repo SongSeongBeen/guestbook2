@@ -28,7 +28,7 @@
 			</tr>
 		</table>
 			<button type="submit">확인</button>
-			<input type="hidden" name="action" value="add">
+			<td><input type="hidden" name="action" value="add"></td>
 	</form>
 		<!-- 등록 폼영역 -->
 		<br>
